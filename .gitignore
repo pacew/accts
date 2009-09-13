@@ -6,5 +6,5 @@ import-qif
 *.ofx
 *.qif
 *.xml
-wtrans.dump
+accts.dump
 *.xls

@@ -27,7 +27,7 @@ main (int argc, char **argv)
 	if (optind != argc)
 		usage ();
 
-	db_init3 ("dbname=wtrans");
+	db_init3 ("dbname=accts");
 
 	read_ofx ("checking.ofx");
 

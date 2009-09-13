@@ -1,6 +1,6 @@
 <?php
 
-$dbname = "wtrans";
+$dbname = "accts";
 
 
 require ("DB.php");
@@ -182,7 +182,7 @@ function make_nav () {
 
 	$ret .= "<div class='nav'>\n";
 	$ret .= "<ul class='nav_main'>\n";
-	$ret .= sprintf ("<li>%s</li>\n", mklink ("raw", "wtrans.php"));
+	$ret .= sprintf ("<li>%s</li>\n", mklink ("raw", "raw.php"));
 	$ret .= sprintf ("<li>%s</li>\n", mklink ("splits", "splits.php"));
 	$ret .= sprintf ("<li>%s</li>\n", mklink ("tags", "tags.php"));
 	$ret .= "</ul>\n";
