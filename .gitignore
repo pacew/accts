@@ -1,0 +1,10 @@
+import-ofx
+import-qif
+*.o
+*~
+?
+*.ofx
+*.qif
+*.xml
+wtrans.dump
+*.xls

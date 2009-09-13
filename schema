@@ -1,0 +1,30 @@
+create sequence seq start 100;
+
+create table raw_trans (
+       tid integer,
+       acct_id varchar,
+       trans_id varchar,
+       ref varchar,
+       name varchar,
+       memo varchar,
+       amount numeric,
+       posted timestamp without time zone,
+       trans_type varchar
+);
+
+create table trans (
+       tid integer,
+       name2 varchar
+);
+
+create table tags (
+       tag_id integer,
+       name varchar
+);
+
+create table splits (
+       split_id integer,
+       tid integer,
+       tag_id integer,
+       split_amount numeric
+);

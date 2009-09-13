@@ -1,0 +1,60 @@
+curl --user pace@alum.mit.edu:... https://www.wesabe.com/accounts.xml
+curl --user pace@alum.mit.edu:... https://www.wesabe.com/transactions.xml
+
+      post(:url => '/rest/upload/statement', :payload => pack_statement)
+
+
+
+/accounts.xml
+/credentials.xml
+/targets.xml
+
+# Starts a new sync job for this +Wesabe::Credential+.
+/credentials/#{id}/jobs.xml
+
+
+
+
+if ($arg_edit_split == 1) {
+	$body .= "<h1>Edit split</h1>\n";
+	$body .= "<form action='trans.php'>\n";
+	$body .= "<input type='hidden' name='edit_split' value='2' />\n";
+	$body .= sprintf ("<input type='hidden' name='tid' value='%d' />\n",
+			  $arg_tid);
+	$body .= sprintf ("<input type='hidden'"
+			  ." name='split_id' value='%d' />\n",
+			  $arg_split_id);
+
+	$body .= "<table class='twocol'>\n";
+
+	$body .= "<tr><th>Tag</th><td>";
+	$body .= $db_split_tag_id;
+	$body .= "</td></tr>\n";
+
+	$body .= "<tr><th>Amount</th><td>";
+	$body .= sprintf ("<input type='text'"
+			  ." name='split_amount' value='%s' />",
+			  0);
+	$body .= "</td></tr>\n";
+
+	$body .= "<tr><th></th><td>"
+		."<input type='submit' value='Save' />"
+		."</td></tr>\n";
+
+	$body .= "</table>\n";
+	$body .= "</form>\n";
+	pfinish ();
+}
+if ($arg_split_id) {
+	$q = query ("select tag_id, split_amount"
+		    ." from splits"
+		    ." where tid = ? and split_id = ?",
+		    array ($arg_tid, $arg_split_id));
+	if (($r = fetch ($q)) != NULL) {
+		$db_split_tag_id = 0 + $r->tag_id;
+		$db_split_amount = 0 + $r->split_amount;
+	} else {
+		$db_split_tag_id = 0;
+		$db_split_amount = 0;
+	}
+}
